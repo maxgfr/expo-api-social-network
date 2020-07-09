@@ -18,7 +18,7 @@ export default function App() {
       .then((res) => {
         console.log(res)
         access_token = res.access_token;
-        return Synchronize.getInstance().getTwitchMetrics(res.access_token)
+        return Synchronize.getInstance().getTwitchMetrics(access_token)
       })
       .then((res) => {
         console.log(res)
@@ -37,7 +37,23 @@ export default function App() {
   }
 
   _onInstagram = () => {
-
+    var access_token = '';
+    Synchronize.getInstance().getInstagramToken()
+      .then((res) => {
+        console.log(res)
+        access_token = res.access_token;
+        return Synchronize.getInstance().getInstagramMetrics(access_token)
+      })
+      .then((res) => {
+        console.log(res)
+        return Synchronize.getInstance().getAllInstagram(access_token)
+      })
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   return (
