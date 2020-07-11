@@ -80,22 +80,24 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
-      <TouchableOpacity onPress={_onTwitch} style={[styles.button, { backgroundColor: "#6441a5" }]}>
-        <Text style={styles.text}>Twitch</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={_onYoutube} style={[styles.button, { backgroundColor: "#FF0000" }]}>
-        <Text style={styles.text}>Youtube</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={_onInstagram}>
-        <LinearGradient
-          colors={['#405DE6', '#5851DB', '#833AB4', '#C13584', '#E1306C', '#FD1D1D', '#F56040', '#F77737', '#FCAF45', '#FFDC80']}
-          start={[0.9, 0.1]}
-          end={[0.1, 0.9]}
-          style={[styles.button, { backgroundColor: "#FD1D1D" }]}>
-            <Text style={styles.text}>Instagram</Text>
-        </LinearGradient>
-      </TouchableOpacity>
+      <View style={styles.buttons}>
+        <StatusBar style="auto" />
+        <TouchableOpacity onPress={_onTwitch} style={[styles.button, { backgroundColor: "#6441a5" }]}>
+          <Text style={styles.text}>Twitch</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={_onYoutube} style={[styles.button, { backgroundColor: "#FF0000" }]}>
+          <Text style={styles.text}>Youtube</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={_onInstagram}>
+          <LinearGradient
+            colors={['#405DE6', '#5851DB', '#833AB4', '#C13584', '#E1306C', '#FD1D1D', '#F56040', '#F77737', '#FCAF45', '#FFDC80']}
+            start={[0.9, 0.1]}
+            end={[0.1, 0.9]}
+            style={[styles.button, { backgroundColor: "#FD1D1D" }]}>
+              <Text style={styles.text}>Instagram</Text>
+          </LinearGradient>
+        </TouchableOpacity>
+      </View>
       <View style={styles.tree}>
         <JSONTree data={jsonObject} />
       </View>
@@ -106,6 +108,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center'
+  },
+  buttons: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
@@ -127,6 +132,6 @@ const styles = StyleSheet.create({
   },
   tree: {
     paddingHorizontal: 100,
-    marginBottom: 20
+    marginVertical: 20
   }
 });
