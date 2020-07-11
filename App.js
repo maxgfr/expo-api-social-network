@@ -33,7 +33,19 @@ export default function App() {
   }
 
   _onYoutube = () => {
-
+    var access_token = '';
+    Synchronize.getInstance().getYoutubeToken()
+      .then((res) => {
+        console.log(res)
+        access_token = res.accessToken;
+        return Synchronize.getInstance().getYoutubeMetrics(access_token)
+      })
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   _onInstagram = () => {

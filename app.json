@@ -18,7 +18,11 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.maxgfr.soexposocialnetwork",
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.maxgfr.soexposocialnetwork"
     },
     "web": {
       "favicon": "./assets/favicon.png"
