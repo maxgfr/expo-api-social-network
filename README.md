@@ -1,6 +1,6 @@
 # expo-api-social-network
 
-Expo application to get all your youtube videos, twitch videos / clips and instagram pics.
+Expo application getting all your youtube videos, twitch videos / clips and instagram pics.
 
 ## Run the project
 
