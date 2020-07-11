@@ -1,16 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   TouchableOpacity,
   View,
   Text
 } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import * as AuthSession from 'expo-auth-session';
 import { LinearGradient } from 'expo-linear-gradient';
+import JSONTree from 'react-native-json-tree';
 import { Synchronize } from './lib/synchronize';
 
 export default function App() {
+
+  const [jsonObject, setJsonObject] = useState({});
 
   _onTwitch = () => {
     var access_token = '';
@@ -26,6 +29,7 @@ export default function App() {
       })
       .then((res) => {
         console.log(res)
+        setJsonObject(res);
       })
       .catch((err) => {
         console.log(err)
@@ -42,6 +46,11 @@ export default function App() {
       })
       .then((res) => {
         console.log(res)
+        return Synchronize.getInstance().getAllYoutube(access_token, res.upload_url)
+      })
+      .then((res) => {
+        console.log(res)
+        setJsonObject(res);
       })
       .catch((err) => {
         console.log(err)
@@ -62,6 +71,7 @@ export default function App() {
       })
       .then((res) => {
         console.log(res)
+        setJsonObject(res);
       })
       .catch((err) => {
         console.log(err)
@@ -86,6 +96,9 @@ export default function App() {
             <Text style={styles.text}>Instagram</Text>
         </LinearGradient>
       </TouchableOpacity>
+      <View style={styles.tree}>
+        <JSONTree data={jsonObject} />
+      </View>
     </View>
   );
 }
@@ -112,4 +125,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     flexDirection: 'row'
   },
+  tree: {
+    paddingHorizontal: 100,
+    marginBottom: 20
+  }
 });
